@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex to DFA Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Regex to DFA Converter</h1>
+        <div class="input-container">
+            <input type="text" id="regex-input" placeholder="Enter a regular expression">
+            <button id="convert-btn">Convert</button>
+        </div>
+        <div class="visualization-container">
+            <div id="nfa-graph" class="graph"></div>
+            <div id="dfa-graph" class="graph"></div>
+            <div id="minimized-dfa-graph" class="graph"></div>
+        </div>
+        <div class="test-string-container">
+            <input type="text" id="test-string-input" placeholder="Test a string">
+            <button id="test-string-btn">Test</button>
+            <p id="test-result"></p>
+        </div>
+    </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/@hpcc-js/wasm@1.16.0/dist/index.min.js" type="application/javascript"></script>
+    <script src="https://unpkg.com/d3-graphviz@4.1.1/build/d3-graphviz.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
