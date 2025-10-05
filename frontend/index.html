@@ -1,32 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regex to DFA Converter</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regex to DFA Converter</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Regex to DFA Converter</h1>
-        <div class="input-container">
-            <input type="text" id="regex-input" placeholder="Enter a regular expression">
-            <button id="convert-btn">Convert</button>
-        </div>
-        <div class="visualization-container">
-            <div id="nfa-graph" class="graph"></div>
-            <div id="dfa-graph" class="graph"></div>
-            <div id="minimized-dfa-graph" class="graph"></div>
-        </div>
-        <div class="test-string-container">
-            <input type="text" id="test-string-input" placeholder="Test a string">
-            <button id="test-string-btn">Test</button>
-            <p id="test-result"></p>
-        </div>
+<div class="container">
+  <h1>Regex → DFA</h1>
+  <p class="subtitle">Transform Regular Expressions Into DFA</p>
+  
+  <div class="input-section">
+    <div class="input-container">
+      <input type="text" id="regex-input" placeholder="ENTER REGEX (e.g., (a|b)*abb)">
+      <button id="convert-btn">Convert</button>
     </div>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://unpkg.com/@hpcc-js/wasm@1.16.0/dist/index.min.js" type="application/javascript"></script>
-    <script src="https://unpkg.com/d3-graphviz@4.1.1/build/d3-graphviz.js"></script>
-    <script src="script.js"></script>
+  </div>
+
+  <div class="visualization-section">
+    <h2 class="section-title">Automata Visualizations</h2>
+    <div class="visualization-container">
+      <div class="graph-wrapper">
+        <div class="graph-header nfa-header">NFA - Nondeterministic</div>
+        <div id="nfa-graph" class="graph">
+          <div class="empty-state">Enter Regex & Click Convert</div>
+        </div>
+      </div>
+      <div class="graph-wrapper">
+        <div class="graph-header dfa-header">DFA - Deterministic</div>
+        <div id="dfa-graph" class="graph">
+          <div class="empty-state">Enter Regex & Click Convert</div>
+        </div>
+      </div>
+      <div class="graph-wrapper">
+        <div class="graph-header min-header">Minimized DFA</div>
+        <div id="minimized-dfa-graph" class="graph">
+          <div class="empty-state">Enter Regex & Click Convert</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-string-section">
+    <h2 class="section-title">Test String</h2>
+    <div class="test-string-container">
+      <input type="text" id="test-string-input" placeholder="ENTER STRING TO TEST">
+      <button id="test-string-btn">Test</button>
+    </div>
+    <p id="test-result"></p>
+  </div>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://unpkg.com/@hpcc-js/wasm@1.16.0/dist/index.min.js"></script>
+<script src="https://unpkg.com/d3-graphviz@4.1.1/build/d3-graphviz.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
