@@ -1,19 +1,16 @@
 import sys
 
-# add the parent directory to the path
 sys.path.append(sys.path[0] + "/..")
 from backend.nfa_builder import NFA, State, NFABuilder
 
 
 class RegexParser:
     def __init__(self, regex):
+        regex = regex.replace("+", "|")
         self.regex = regex
         self.postfix_regex = self._to_postfix()
 
     def _add_concat_operator(self):
-        # add concatenation operator '.'
-        # e.g. ab -> a.b
-        # (a|b)c -> (a|b).c
         output = ""
         for i in range(len(self.regex)):
             output += self.regex[i]
@@ -26,7 +23,6 @@ class RegexParser:
 
     def _to_postfix(self):
         # convert infix regex to postfix
-        # e.g. a.b|c -> ab.c|
         infix = self._add_concat_operator()
         postfix = ""
         stack = []
@@ -57,12 +53,10 @@ class RegexParser:
 
 
 if __name__ == "__main__":
-    # get regex from command line
     regex = sys.argv[1]
     parser = RegexParser(regex)
     print(f"Infix: {parser.regex}")
     print(f"Postfix: {parser.postfix_regex}")
     nfa = parser.to_nfa()
     print(nfa)
-    # draw the nfa
     nfa.draw()

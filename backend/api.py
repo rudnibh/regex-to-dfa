@@ -2,7 +2,6 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import sys
 
-# add the parent directory to the path
 sys.path.append(sys.path[0] + "/..")
 from backend.regex_parser import RegexParser
 from backend.dfa_converter import DFAConverter
@@ -16,7 +15,6 @@ def get_graph_dot(graph):
     dot = "digraph G {\n"
     q = [graph.start]
     visited = {graph.start}
-    # map states to names
     state_names = {graph.start: "q0"}
     i = 1
     while q:
@@ -33,7 +31,7 @@ def get_graph_dot(graph):
                 state_names[state] = f"q{i}"
                 i += 1
             dot += f'  {curr_name} -> {state_names[state]} [label="{symbol}"];\n'
-        # also consider epsilon transitions for nfa
+        #also consider epsilon transitions for nfa
         if hasattr(curr, "epsilon_transitions"):
             for state in curr.epsilon_transitions:
                 if state not in visited:

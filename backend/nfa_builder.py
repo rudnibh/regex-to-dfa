@@ -22,13 +22,6 @@ class NFA:
         self.end.is_end = True
 
     def __str__(self):
-        # return a string representation of the nfa
-        # this is useful for debugging
-        # it should show all the states and transitions
-        # e.g.
-        # q0 -> q1 (a)
-        # q1 -> q2 (b)
-        # q2 is end state
         s = ""
         # do a bfs to print all the states
         q = [self.start]
@@ -58,11 +51,9 @@ class NFA:
         return s
 
     def draw(self):
-        # draw the nfa using graphviz
         dot = Digraph()
         q = [self.start]
         visited = {self.start}
-        # map states to names
         state_names = {self.start: "q0"}
         i = 1
         while q:
@@ -95,14 +86,12 @@ class NFABuilder:
         self.nfa_stack = []
 
     def _char(self, char):
-        # create a nfa for a single character
         start = State()
         end = State(is_end=True)
         start.add_transition(char, end)
         self.nfa_stack.append(NFA(start, end))
 
     def _concat(self):
-        # create a nfa for concatenation
         nfa2 = self.nfa_stack.pop()
         nfa1 = self.nfa_stack.pop()
         nfa1.end.is_end = False
@@ -110,7 +99,6 @@ class NFABuilder:
         self.nfa_stack.append(NFA(nfa1.start, nfa2.end))
 
     def _union(self):
-        # create a nfa for union
         nfa2 = self.nfa_stack.pop()
         nfa1 = self.nfa_stack.pop()
         start = State()
@@ -124,7 +112,6 @@ class NFABuilder:
         self.nfa_stack.append(NFA(start, end))
 
     def _kleene(self):
-        # create a nfa for kleene star
         nfa = self.nfa_stack.pop()
         start = State()
         end = State(is_end=True)

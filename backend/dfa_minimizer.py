@@ -1,7 +1,6 @@
 import sys
 from graphviz import Digraph
 
-# add the parent directory to the path
 sys.path.append(sys.path[0] + "/..")
 from backend.dfa_converter import DFA, DFAState
 
@@ -31,9 +30,6 @@ class DFAMinimizer:
                 if len(partition) <= 1:
                     new_partitions.append(partition)
                     continue
-                # split partition
-                # check if all states in partition go to the same partition for each symbol
-                # if not, split them
                 split_map = {}
                 for state in partition:
                     key = []
@@ -55,7 +51,6 @@ class DFAMinimizer:
             if len(new_partitions) == len(self.partitions):
                 break
             self.partitions = new_partitions
-        # create new dfa
         new_states = []
         state_map = {}
         for i, partition in enumerate(self.partitions):
@@ -64,8 +59,6 @@ class DFAMinimizer:
                 if state.is_end:
                     is_end = True
                     break
-            # we need to convert the set of nfa states to a frozenset to be hashable
-            # but we are creating a new dfa state, so we can just use the partition index
             new_state = DFAState(frozenset(partition), is_end=is_end)
             new_states.append(new_state)
             for state in partition:
@@ -78,7 +71,6 @@ class DFAMinimizer:
 
 
 if __name__ == "__main__":
-    # get regex from command line
     regex = sys.argv[1]
     from backend.regex_parser import RegexParser
     from backend.dfa_converter import DFAConverter

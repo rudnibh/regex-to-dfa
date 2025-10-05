@@ -1,7 +1,6 @@
 import sys
 from graphviz import Digraph
 
-# add the parent directory to the path
 sys.path.append(sys.path[0] + "/..")
 from backend.nfa_builder import NFA, State
 
