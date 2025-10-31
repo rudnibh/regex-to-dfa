@@ -133,6 +133,9 @@ button:active {
   font-size: 1.1rem;
   text-transform: uppercase;
   border-bottom: 5px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .graph-header.nfa-header {
@@ -154,6 +157,28 @@ button:active {
   align-items: center;
   justify-content: center;
   background: #fafafa;
+}
+
+.download-btn {
+  padding: 8px 12px;
+  border: 3px solid black;
+  background: #fff;
+  border-radius: 10px;
+  font-size: 1rem;
+  line-height: 1;
+  box-shadow: 3px 3px 0 black;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease;
+}
+
+.download-btn:hover {
+  transform: translate(-2px, -2px) rotate(-2deg);
+  box-shadow: 5px 5px 0 black;
+  background: #ffeef6;
+}
+
+.download-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 black;
 }
 
 .test-string-section {
@@ -199,6 +224,71 @@ button:active {
   font-size: 0.9rem;
 }
 
+
+
+@keyframes popIn {
+  0% { transform: scale(0.6) rotate(-10deg); opacity: 0; }
+  70% { transform: scale(1.08) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); }
+}
+
+
+
+.char-bubbles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.char-bubble {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 3px solid black;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 3px 3px 0 black;
+  font-weight: 900;
+  opacity: 0;
+  transform: scale(0.7) rotate(-6deg);
+  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+}
+
+.char-bubble.show {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+  animation: popIn 300ms ease-out;
+}
+
+.char-bubble.active {
+  background: #fff7cc;
+}
+
+.char-bubble.pass {
+  background: #c8e6c9;
+}
+
+.char-bubble.fail {
+  background: #ffcdd2;
+}
+
+
+
+.shake {
+  animation: shake 450ms cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 20px;
@@ -223,7 +313,6 @@ button:active {
   }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
 }
