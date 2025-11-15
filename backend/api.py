@@ -2,9 +2,9 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import sys
 
-from backend.regex_parser import RegexParser
-from backend.dfa_converter import DFAConverter
-from backend.dfa_minimizer import DFAMinimizer
+from regex_parser import RegexParser
+from dfa_converter import DFAConverter
+from dfa_minimizer import DFAMinimizer
 
 app = Flask(__name__)
 CORS(app)
