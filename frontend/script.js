@@ -1,3 +1,5 @@
+const API_BASE_URL = 'https://regex-to-dfa.onrender.com';
+
 document.getElementById('convert-btn').addEventListener('click', () => {
   const regex = document.getElementById('regex-input').value;
   if (!regex) {
@@ -5,7 +7,6 @@ document.getElementById('convert-btn').addEventListener('click', () => {
     return;
   }
 
-  const API_BASE_URL = 'https://regex-to-dfa.onrender.com';
   
   fetch(`${API_BASE_URL}/convert`, {
     method: 'POST',
