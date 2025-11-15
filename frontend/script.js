@@ -4,8 +4,10 @@ document.getElementById('convert-btn').addEventListener('click', () => {
     alert('Please enter a regular expression');
     return;
   }
+
+  const API_BASE_URL = 'https://regex-to-dfa.onrender.com';
   
-  fetch('http://127.0.0.1:5000/convert', {
+  fetch(`${API_BASE_URL}/convert`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -39,7 +41,7 @@ document.getElementById('test-string-btn').addEventListener('click', () => {
     return;
   }
   
-  fetch('http://127.0.0.1:5000/test', {
+  fetch(`${API_BASE_URL}/test`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
