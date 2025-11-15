@@ -1,7 +1,6 @@
 import sys
 
-sys.path.append(sys.path[0] + "/..")
-from backend.nfa_builder import NFA, State, NFABuilder
+from nfa_builder import NFA, State, NFABuilder
 
 
 class RegexParser:

@@ -1,8 +1,7 @@
 import sys
 from graphviz import Digraph
 
-sys.path.append(sys.path[0] + "/..")
-from backend.dfa_converter import DFA, DFAState
+from dfa_converter import DFA, DFAState
 
 
 class DFAMinimizer:
@@ -72,8 +71,8 @@ class DFAMinimizer:
 
 if __name__ == "__main__":
     regex = sys.argv[1]
-    from backend.regex_parser import RegexParser
-    from backend.dfa_converter import DFAConverter
+    from regex_parser import RegexParser
+    from dfa_converter import DFAConverter
 
     parser = RegexParser(regex)
     nfa = parser.to_nfa()

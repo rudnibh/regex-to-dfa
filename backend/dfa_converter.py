@@ -1,8 +1,7 @@
 import sys
 from graphviz import Digraph
 
-sys.path.append(sys.path[0] + "/..")
-from backend.nfa_builder import NFA, State
+from nfa_builder import NFA, State
 
 
 class DFAState:
@@ -146,7 +145,7 @@ class DFAConverter:
 if __name__ == "__main__":
     # get regex from command line
     regex = sys.argv[1]
-    from backend.regex_parser import RegexParser
+    from regex_parser import RegexParser
 
     parser = RegexParser(regex)
     nfa = parser.to_nfa()
