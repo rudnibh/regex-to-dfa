@@ -2,3 +2,4 @@ flask
 graphviz
 automata-lib
 flask-cors
+waitress
